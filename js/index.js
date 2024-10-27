@@ -10,8 +10,33 @@ let internet = document.getElementById('internet').value;
 let internetNum=parseFloat(internet);
 
 
+
+if(incomeNum<=0 || isNaN(incomeNum)){
+    document.getElementById('income-error').classList.remove('hidden');
+    return
+}
+if(softwareNum<=0 || isNaN(softwareNum)){
+    document.getElementById('software-error').classList.remove('hidden');
+    return
+}
+if(cursesNum<=0 || isNaN(cursesNum)){
+    document.getElementById('courses-error').classList.remove('hidden');
+    return
+}
+if(internetNum<=0 || isNaN(internetNum)){
+    document.getElementById('internet-error').classList.remove('hidden');
+    return
+}
+
+
 let totalExpence = softwareNum+ cursesNum + internetNum;
 let balance = incomeNum - totalExpence
+
+
+if(totalExpence > income){
+    document.getElementById('logic-error').classList.remove('hidden')
+    return
+}
 
 let totalExpencesvalue = document.getElementById('total-expenses').innerText = totalExpence.toFixed(2);
 
@@ -47,6 +72,8 @@ let cursesNum=parseFloat(curses);
 let internet = document.getElementById('internet').value;
 let internetNum=parseFloat(internet);
 
+
+
 let totalExpence = softwareNum+ cursesNum + internetNum;
 let balance = incomeNum - totalExpence
 
@@ -72,4 +99,24 @@ historyTab.addEventListener('click', function(){
 
         document.getElementById('expense-form').classList.add('hidden')
         document.getElementById('history-section').classList.remove('hidden')
+    })
+
+    assistantTab.addEventListener('click', function(){
+
+        assistantTab.classList.add(
+            'text-white', 'bg-gradient-to-r', 'from-blue-500', 'to-purple-600'
+        )
+        historyTab.classList.remove('text-white', 'bg-gradient-to-r', 'from-blue-500', 'to-purple-600')
+        document.getElementById('expense-form').classList.remove('hidden')
+        document.getElementById('history-section').classList.add('hidden')
+
+    })
+
+    document.getElementById('income').addEventListener('input', function(){
+        let inputValue = parseFloat(document.getElementById('income').value)
+
+        if(inputValue <=0 || isNaN(inputValue)){
+            document.getElementById('income-error').classList.remove('hidden');
+    return
+        }
     })
