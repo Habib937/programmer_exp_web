@@ -19,6 +19,19 @@ let balancevalue = document.getElementById('balance').innerText = balance.toFixe
 
 let result = document.getElementById('results').classList.remove('hidden')
 
+let historyItem = document.createElement('div');
+historyItem.className = 'bg-white p-3 rounded-md border-l-2 border-indigo-500';
+
+historyItem.innerHTML=`
+                <p class = "text-xs text-gray-500">${new Date().toDateString()}</p>
+                <p class = "text-xs text-gray-500">Income: $${incomeNum.toFixed(2)}</p>
+                <p class = "text-xs text-gray-500">totalExpence: $${totalExpence.toFixed(2)}</p>
+                <p class = "text-xs text-gray-500">balance: $${balance.toFixed(2)}</p>
+`
+
+let historyAdd = document.getElementById('history-list');
+    historyAdd.insertBefore(historyItem, historyAdd.firstChild);
+
 })
 
 
@@ -58,4 +71,5 @@ historyTab.addEventListener('click', function(){
         assistantTab.classList.remove('text-gray-600')
 
         document.getElementById('expense-form').classList.add('hidden')
+        document.getElementById('history-section').classList.remove('hidden')
     })
